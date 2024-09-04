@@ -43,11 +43,8 @@ export async function selectUserId(req, res) {
 
 export async function selectUserByName(req, res) {
 
-    console.log("req.body");
-
     let {name }= req.body;  
-
-    console.log(name);
+    
     openDb().then(db => {
         db.all(`SELECT * FROM USERS WHERE usrName LIKE ?`, [`%${name}%`])
           .then(data => res.json(data))
